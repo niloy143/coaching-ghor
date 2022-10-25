@@ -5,3 +5,11 @@
 .bg-nav-white {
     background: #f1f5f9 !important;
 }
+
+.toggle-button-dark {
+    color: #f1f5f9 !important;
+}
+
+.toggle-button-dark:hover {
+    background-color: #64748b !important;
+}

@@ -8,7 +8,7 @@ const Login = () => {
 
     return (
         <div>
-            <form className={`${dark ? 'bg-slate-500 text-slate-100' : 'bg-slate-100 text-slate-700'} shadow-md w-1/3 mx-auto flex flex-col gap-2 p-5 my-12 rounded-lg`}>
+            <form className={`${dark ? 'bg-slate-500 text-slate-100' : 'bg-slate-100 text-slate-700'} shadow-md w-11/12 sm:w-2/3 md:w-1/2 xl:w-1/3 mx-auto flex flex-col gap-2 p-5 my-12 rounded-lg`}>
                 <h2 className='text-2xl font-semibold text-center mb-3'>Log In</h2>
                 <input className='border-gray-300 rounded text-slate-700' type="email" name="email" placeholder="Enter Your Email" required />
                 <input className='border-gray-300 rounded text-slate-700' type="password" name="password" placeholder="Password" required />

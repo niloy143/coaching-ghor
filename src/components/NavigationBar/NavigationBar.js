@@ -22,9 +22,9 @@ const NavigationBar = () => {
                     <span>Coaching Ghor</span>
                 </div>
             </Navbar.Brand>
-            <Navbar.Toggle className={`${dark ? 'text-white hover:bg-slate-700' : 'text-slate-700'}`} />
+            <Navbar.Toggle className={`${dark ? 'toggle-button-dark' : 'text-slate-700'}`} />
             <Navbar.Collapse>
-                <div className='flex flex-col md:flex-row items-center gap-2 md:gap-5 pb-5 md:pb-0'>
+                <div className='flex flex-col md:flex-row items-center gap-5 pb-5 md:pb-0'>
                     <div className='flex gap-3'>
                         <NavLink className={({ isActive }) => `py-1 px-3 rounded hover:bg-slate-200 hover:text-slate-700 ${isActive && 'bg-slate-200 text-slate-700'}`} to="/courses">Courses</NavLink>
                         <NavLink className={({ isActive }) => `py-1 px-3 rounded hover:bg-slate-200 hover:text-slate-700 ${isActive && 'bg-slate-200 text-slate-700'}`} to="/faq">FAQ</NavLink>
