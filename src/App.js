@@ -1,12 +1,10 @@
-import { useContext } from "react";
-import { ContextCreator } from "./ContextProvider/ContextProvider";
+import { RouterProvider } from "react-router-dom";
+import { routes } from './Routes/routes';
 
 function App() {
-  const meAndYou = useContext(ContextCreator);
+
   return (
-    <div>
-      {console.log(meAndYou)}
-    </div>
+    <RouterProvider router={routes} />
   );
 }
 
