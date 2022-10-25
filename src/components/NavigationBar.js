@@ -1,37 +1,43 @@
 import { Navbar } from 'flowbite-react';
-import React from 'react';
-import { NavLink } from 'react-router-dom';
+import React, { useContext } from 'react';
+import { NavLink, useNavigate } from 'react-router-dom';
 import logo from '../assets/coaching-ghor.logo.png'
+import { ContextCreator } from '../ContextProvider/ContextProvider';
 
 const NavigationBar = () => {
+    const { dark, setDark } = useContext(ContextCreator);
+    const navigate = useNavigate();
+
+    const handleMode = (isDark) => {
+        setDark(isDark)
+    }
+
     return (
-        <div className='shadow-lg sticky top-0'>
-            <Navbar fluid={true} >
-                <Navbar.Brand>
-                    <NavLink to="/" className='flex items-center gap-1 text-2xl font-semibold'>
-                        <img className='w-16' src={logo} alt="coaching ghor logo" />
-                        <span>Coaching Ghor</span>
-                    </NavLink>
-                </Navbar.Brand>
-                <Navbar.Toggle />
-                <Navbar.Collapse>
-                    <div className='flex items-center gap-5'>
-                        <div className='flex gap-3'>
-                            <NavLink className={({isActive}) => `py-1 px-3 rounded hover:bg-slate-200 ${isActive && 'bg-slate-200'}`} to="/courses">Courses</NavLink>
-                            <NavLink className={({isActive}) => `py-1 px-3 rounded hover:bg-slate-200 ${isActive && 'bg-slate-200'}`} to="/faq">FAQ</NavLink>
-                            <NavLink className={({isActive}) => `py-1 px-3 rounded hover:bg-slate-200 ${isActive && 'bg-slate-200'}`} to="/blog">Blog</NavLink>
-                        </div>
-                        <div className='bg-slate-400 p-1 rounded-full'>
-                            <button className='py-1 px-3 bg-slate-100 rounded-full'>Light</button>
-                            <button className='py-1 px-3 text-slate-100 rounded-full'>Dark</button>
-                        </div>
-                        <div>
-                            <button className='px-4 py-2 bg-pink-800 text-slate-100 rounded'>Login</button>
-                        </div>
+        <Navbar fluid={true} className={`${dark ? 'bg-slate-500 text-slate-100' : 'bg-slate-100 text-slate-700'} shadow-lg sticky top-0`}>
+            <Navbar.Brand>
+                <div className='flex items-center gap-1 text-2xl font-semibold cursor-pointer' onClick={() => navigate("/")}>
+                    <img className='w-12 sm:w-16' src={logo} alt="coaching ghor logo" />
+                    <span>Coaching Ghor</span>
+                </div>
+            </Navbar.Brand>
+            <Navbar.Toggle className={`${dark ? 'text-white hover:bg-slate-700' : 'text-slate-700'}`} />
+            <Navbar.Collapse>
+                <div className='flex flex-col md:flex-row items-center gap-2 md:gap-5 pb-5 md:pb-0'>
+                    <div className='flex gap-3'>
+                        <NavLink className={({ isActive }) => `py-1 px-3 rounded hover:bg-slate-200 hover:text-slate-700 ${isActive && 'bg-slate-200 text-slate-700'}`} to="/courses">Courses</NavLink>
+                        <NavLink className={({ isActive }) => `py-1 px-3 rounded hover:bg-slate-200 hover:text-slate-700 ${isActive && 'bg-slate-200 text-slate-700'}`} to="/faq">FAQ</NavLink>
+                        <NavLink className={({ isActive }) => `py-1 px-3 rounded hover:bg-slate-200 hover:text-slate-700 ${isActive && 'bg-slate-200 text-slate-700'}`} to="/blog">Blog</NavLink>
                     </div>
-                </Navbar.Collapse>
-            </Navbar>
-        </div>
+                    <div className={`${dark ? 'bg-slate-700' : 'bg-slate-400'} p-1 rounded-full`}>
+                        <button onClick={() => handleMode(false)} className={`py-1 px-3 ${!dark ? 'bg-slate-100' : 'text-slate-100'} rounded-full`}>Light</button>
+                        <button onClick={() => handleMode(true)} className={`py-1 px-3 ${dark ? 'bg-slate-100 text-slate-700' : 'text-slate-100'} rounded-full`}>Dark</button>
+                    </div>
+                    <div>
+                        <button className={`px-4 py-2 ${dark ? 'bg-pink-800' : 'bg-pink-600'} text-slate-100 rounded`}>Login</button>
+                    </div>
+                </div>
+            </Navbar.Collapse>
+        </Navbar>
     );
 };
 

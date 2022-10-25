@@ -1,20 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { createContext } from 'react';
 
 export const ContextCreator = createContext({});
 
 const ContextProvider = ({children}) => {
 
-    const me = {
-        name: 'Niloy',
-        age: '20'
-    }
-    const you = {
-        name: 'You',
-        age: '17'
-    }
+    const [ dark, setDark ] = useState(false);
 
-    const contextValue = {me, you};
+    const contextValue = {dark, setDark};
 
     return (
         <ContextCreator.Provider value={contextValue}>
