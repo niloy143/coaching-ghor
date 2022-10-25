@@ -1,4 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
+import Login from "../components/Login/Login";
 import NavigationBar from "../components/NavigationBar/NavigationBar";
 import Main from "../layout/Main";
 
@@ -10,6 +11,10 @@ export const routes = createBrowserRouter([
             {
                 path: '/',
                 element: <div>this is home</div>
+            },
+            {
+                path: '/login',
+                element: <Login />
             }
         ]
     },
