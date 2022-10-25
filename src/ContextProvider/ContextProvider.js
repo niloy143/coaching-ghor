@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { createContext } from 'react';
-import { getAuth, createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, updateProfile, onAuthStateChanged, signOut } from "firebase/auth";
 import app from '../firebase/firebase-init';
 
 const auth = getAuth(app);
@@ -26,16 +26,29 @@ const ContextProvider = ({ children }) => {
             displayName: name,
             photoURL: photo
         })
-            .then(() => {})
+            .then(() => { })
             .catch((error) => console.error(error.message));
     }
+
+    const logOut = () => {
+        signOut(auth);
+    }
+
+    useEffect(() => {
+        const unsubscribe = onAuthStateChanged(auth, (user) => {
+            setUser(user)
+        })
+
+        return () => unsubscribe();
+    }, [])
 
 
     const contextValue = {
         dark,
         setDark,
         createUser,
-        user
+        user,
+        logOut
     };
 
     return (
