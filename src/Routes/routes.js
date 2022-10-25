@@ -1,4 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
+import NavigationBar from "../components/NavigationBar";
 import Main from "../layout/Main";
 
 export const routes = createBrowserRouter([
@@ -11,5 +12,12 @@ export const routes = createBrowserRouter([
                 element: <div>this is home</div>
             }
         ]
+    },
+    {
+        path: '*',
+        element: <div>
+            <NavigationBar />
+            <p className="text-3xl font-semibold text-center text-slate-500 my-12">Page Not Found</p>
+        </div>
     }
 ])
