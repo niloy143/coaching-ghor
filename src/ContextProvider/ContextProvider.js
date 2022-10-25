@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { createContext } from 'react';
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import app from '../firebase/firebase-init';
 
 const auth = getAuth(app);
@@ -12,18 +12,30 @@ const ContextProvider = ({ children }) => {
     const [dark, setDark] = useState(false);
     const [user, setUser] = useState(null);
 
-    const createUser = (email, password) => {
+    const createUser = (email, password, name, photo) => {
         createUserWithEmailAndPassword(auth, email, password)
-            .then(result => console.log(result.user))
+            .then((result) => {
+                setNameAndPhoto(name, photo);
+                setUser(result.user);
+            })
             .catch(error => console.error(error.message))
     }
+
+    const setNameAndPhoto = (name, photo) => {
+        updateProfile(auth.currentUser, {
+            displayName: name,
+            photoURL: photo
+        })
+            .then(() => {})
+            .catch((error) => console.error(error.message));
+    }
+
 
     const contextValue = {
         dark,
         setDark,
         createUser,
-        user,
-        setUser
+        user
     };
 
     return (

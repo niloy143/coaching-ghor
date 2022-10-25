@@ -5,7 +5,7 @@ import ThirdPartySignIn from '../ThirdPartySignIn/ThirdPartySignIn';
 
 const Register = () => {
     const { state } = useLocation();
-    const { dark, user, setUser, createUser } = useContext(ContextCreator);
+    const { dark, createUser } = useContext(ContextCreator);
 
     const handleRegistration = (e) => {
         e.preventDefault();
@@ -17,7 +17,7 @@ const Register = () => {
         const confirmPassword = form.confirmPassword.value;
 
         if(password === confirmPassword) {
-            createUser(email, password);
+            createUser(email, password, name, photoURL);
             form.reset();
         }
     }
