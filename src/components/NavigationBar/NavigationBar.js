@@ -25,7 +25,7 @@ const NavigationBar = () => {
             <Navbar.Toggle className={`${dark ? 'toggle-button-dark' : 'text-slate-700'}`} />
             <Navbar.Collapse>
                 <div className='flex flex-col md:flex-row items-center gap-5 pb-5 md:pb-0'>
-                    <div className='flex gap-3'>
+                    <div className='flex gap-3 text-base sm:text-lg'>
                         <NavLink className={({ isActive }) => `py-1 px-3 rounded hover:bg-slate-200 hover:text-slate-700 ${isActive && 'bg-slate-200 text-slate-700'}`} to="/courses">Courses</NavLink>
                         <NavLink className={({ isActive }) => `py-1 px-3 rounded hover:bg-slate-200 hover:text-slate-700 ${isActive && 'bg-slate-200 text-slate-700'}`} to="/faq">FAQ</NavLink>
                         <NavLink className={({ isActive }) => `py-1 px-3 rounded hover:bg-slate-200 hover:text-slate-700 ${isActive && 'bg-slate-200 text-slate-700'}`} to="/blog">Blog</NavLink>
@@ -35,7 +35,7 @@ const NavigationBar = () => {
                         <button onClick={() => handleMode(true)} className={`py-1 px-3 ${dark ? 'bg-slate-100 text-slate-700' : 'text-slate-100'} rounded-full`}>Dark</button>
                     </div>
                     <div>
-                        <NavLink to="/login" state={location} className={`px-4 py-2 ${dark ? 'bg-pink-800' : 'bg-pink-600'} text-slate-100 rounded`}>Login</NavLink>
+                        <NavLink to="/login" state={location} className={`px-4 py-2 ${dark ? 'bg-pink-800' : 'bg-pink-600'} text-slate-100 text-base font-semibold rounded`}>Login</NavLink>
                     </div>
                 </div>
             </Navbar.Collapse>
