@@ -1,5 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
-import NavigationBar from "../components/NavigationBar";
+import NavigationBar from "../components/NavigationBar/NavigationBar";
 import Main from "../layout/Main";
 
 export const routes = createBrowserRouter([
