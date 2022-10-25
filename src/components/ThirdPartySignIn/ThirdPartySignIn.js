@@ -4,7 +4,7 @@ import { ContextCreator } from '../../ContextProvider/ContextProvider';
 import { FcGoogle } from "react-icons/fc";
 import { FaFacebook } from "react-icons/fa";
 
-const GoogleFacebookSignIn = () => {
+const ThirdPartySignIn = () => {
     const { dark } = useContext(ContextCreator);
     return (
         <div className={`${dark ? 'bg-slate-500' : 'bg-slate-100'} shadow-md w-11/12 sm:w-2/3 md:w-1/2 xl:w-1/3 mx-auto flex flex-col gap-2 py-8 mb-12 rounded-lg`}>
@@ -20,4 +20,4 @@ const GoogleFacebookSignIn = () => {
     );
 };
 
-export default GoogleFacebookSignIn;
+export default ThirdPartySignIn;

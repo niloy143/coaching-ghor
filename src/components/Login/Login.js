@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import { ContextCreator } from '../../ContextProvider/ContextProvider';
-import GoogleFacebookSignIn from '../GoogleFacebookSignIn/GoogleFacebookSignIn';
+import ThirdPartySignIn from '../ThirdPartySignIn/ThirdPartySignIn';
 
 const Login = () => {
     const { state } = useLocation();
@@ -19,7 +19,7 @@ const Login = () => {
                 </p>
             </form>
             <h2 className='text-4xl font-bold text-gray-400 text-center font-mono my-5'>OR</h2>
-            <GoogleFacebookSignIn />
+            <ThirdPartySignIn />
         </div>
     );
 };
