@@ -14,8 +14,6 @@ const NavigationBar = () => {
         setDark(isDark)
     }
 
-    console.log(user)
-
     return (
         <Navbar fluid={true} className={`${dark ? 'bg-nav-dark text-slate-100' : 'bg-nav-light text-slate-700'} shadow-lg sticky top-0 mb-2`}>
             <Navbar.Brand>
