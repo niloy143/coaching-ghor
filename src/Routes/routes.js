@@ -30,9 +30,9 @@ export const routes = createBrowserRouter([
                 element: <PrivateRoute><UpdateProfile /></PrivateRoute>
             },
             {
-                path: '/course',
-                element: <CourseDetails />,
-                loader: async() => fetch('https://coaching-ghor-server.vercel.app/courses')
+                path: '/course/:id',
+                element: <PrivateRoute><CourseDetails /></PrivateRoute>,
+                loader: async ({ params }) => fetch(`https://coaching-ghor-server.vercel.app/course/${params.id}`)
             }
         ]
     },

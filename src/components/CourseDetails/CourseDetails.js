@@ -7,15 +7,13 @@ import { ContextCreator } from '../../ContextProvider/ContextProvider';
 
 const CourseDetails = () => {
     const { dark } = useContext(ContextCreator);
-    const [course] = useLoaderData();
+    const course = useLoaderData();
     let keys = 1;
-
-    console.log(course)
 
     return (
         <div className={`${dark ? 'text-slate-100' : 'text-slate-700'} max-w-7xl mx-auto my-5 sm:my-12 px-5`}>
             <div>
-                <img className='w-full sm:w-5/6 mx-auto rounded-xl' src="https://img.freepik.com/free-vector/social-media-background_127544-1091.jpg?w=1380&t=st=1666808168~exp=1666808768~hmac=5684fe21e92dbac51d2ce7078a84c86765586a1be5f39212254b6eacdedeab47" alt="" />
+                <img className='w-full sm:w-5/6 mx-auto rounded-xl' src={course.image.thumbnail} alt="" />
                 <h2 className='text-3xl sm:text-5xl font-bold text-center my-5 sm:my-8'>{course.title}</h2>
                 <p className='lg:w-1/2 text-justify sm:text-center mx-auto mb-5'>{course.shortDescription}</p>
             </div>
@@ -32,7 +30,7 @@ const CourseDetails = () => {
                     </ul>
                 </div>
                 <div className='w-72 border shadow-lg rounded-lg overflow-hidden pb-5'>
-                    <img className='w-full' src="https://img.freepik.com/free-vector/social-media-background_127544-1091.jpg?w=1380&t=st=1666808168~exp=1666808768~hmac=5684fe21e92dbac51d2ce7078a84c86765586a1be5f39212254b6eacdedeab47" alt="" />
+                    <img className='w-full' src={course.image.thumbnail} alt="" />
                     <NavLink to="" className={`${dark ? 'bg-lime-900' : 'bg-lime-500'} text-slate-100 px-5 py-3 rounded text-lg font-semibold hover:scale-95 block m-3 text-center`}>
                         Get Premium Access <BsFillShieldLockFill className='inline' />
                     </NavLink>
@@ -57,13 +55,13 @@ const CourseDetails = () => {
                             <p className='flex items-center gap-1'>
                                 <CgNotes className='inline text-xl' />
                                 <span>
-                                    {course.Notes} Notes
+                                    {course.notes} Notes
                                 </span>
                             </p>
                             <p className='flex items-center gap-1'>
                                 <BsFillQuestionCircleFill className='inline text-xl' />
                                 <span>
-                                    {course.Quiz} Quiz
+                                    {course.quiz} Quiz
                                 </span>
                             </p>
 
@@ -77,7 +75,7 @@ const CourseDetails = () => {
                 <div className='my-8 flex gap-12 flex-wrap justify-center'>
                     {
                         course.mentors.map(mentor => <div className='w-72 rounded-md overflow-hidden border shadow-lg' key={keys++}>
-                            <img className='w-full' src="https://randomuser.me/api/portraits/men/27.jpg" alt={mentor.name} />
+                            <img className='w-full' src={mentor.img} alt={mentor.name} />
                             <div className='px-5 pb-5'>
                                 <h3 className='text-xl font-semibold text-center my-3'>{mentor.name}</h3>
                                 <p className='text-sm'>{mentor.qualification}</p>
