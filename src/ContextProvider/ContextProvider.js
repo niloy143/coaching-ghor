@@ -12,6 +12,7 @@ const ContextProvider = ({ children }) => {
     const [dark, setDark] = useState(false);
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [loginError, setLoginError] = useState(null);
 
     const createUser = (email, password, name, photo) => {
         createUserWithEmailAndPassword(auth, email, password)
@@ -38,7 +39,7 @@ const ContextProvider = ({ children }) => {
     const login = (email, password) => {
         signInWithEmailAndPassword(auth, email, password)
         .then(() => {})
-        .catch(error => console.error(error.code))
+        .catch(error => setLoginError(error.code))
     }
 
     const thirdPartySignIn = provider => {
@@ -66,7 +67,9 @@ const ContextProvider = ({ children }) => {
         login,
         thirdPartySignIn,
         setNameAndPhoto,
-        loading
+        loading,
+        loginError,
+        setLoginError
     };
 
     return (

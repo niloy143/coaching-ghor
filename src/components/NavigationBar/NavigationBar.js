@@ -4,6 +4,7 @@ import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import logo from '../../assets/coaching-ghor.logo.png'
 import { ContextCreator } from '../../ContextProvider/ContextProvider';
 import './NavigationBar.css';
+import { BsLightbulbFill, BsLightbulbOffFill } from 'react-icons/bs';
 
 const NavigationBar = () => {
     const { dark, setDark, user, logOut, loading } = useContext(ContextCreator);
@@ -46,9 +47,9 @@ const NavigationBar = () => {
                         }
 
                     </div>
-                    <div className={`${dark ? 'bg-slate-700' : 'bg-slate-400'} p-1 rounded-full`}>
-                        <button onClick={() => handleMode(false)} className={`py-1 px-3 ${!dark ? 'bg-slate-100' : 'text-slate-100'} rounded-full`}>Light</button>
-                        <button onClick={() => handleMode(true)} className={`py-1 px-3 ${dark ? 'bg-slate-100 text-slate-700' : 'text-slate-100'} rounded-full`}>Dark</button>
+                    <div className={`${dark ? 'bg-slate-700' : 'bg-slate-400'} p-1 rounded-full flex items-center gap-2`}>
+                        <button onClick={() => handleMode(false)} className={`p-1 text-xl ${!dark ? 'bg-slate-100' : 'text-slate-100'} rounded-full`}><Tooltip content={'Light'}><BsLightbulbFill /></Tooltip></button>
+                        <button onClick={() => handleMode(true)} className={`p-1 text-xl ${dark ? 'bg-slate-100 text-slate-700' : 'text-slate-100'} rounded-full`}><Tooltip content={'Dark'}><BsLightbulbOffFill /></Tooltip></button>
                     </div>
                 </div>
             </Navbar.Collapse>
