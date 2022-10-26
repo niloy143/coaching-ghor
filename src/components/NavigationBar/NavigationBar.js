@@ -15,7 +15,7 @@ const NavigationBar = () => {
     }
 
     return (
-        <Navbar fluid={true} className={`${dark ? 'bg-nav-dark text-slate-100' : 'bg-nav-light text-slate-700'} shadow-lg sticky top-0 mb-2`}>
+        <Navbar fluid={true} className={`${dark ? 'bg-nav-dark text-slate-100' : 'bg-nav-light text-slate-700'} shadow-lg sticky top-0 z-50 mb-2`}>
             <Navbar.Brand>
                 <div className='flex items-center gap-1 text-2xl font-semibold cursor-pointer' onClick={() => navigate("/")}>
                     <img className='w-12 sm:w-16' src={logo} alt="coaching ghor logo" />
@@ -39,7 +39,7 @@ const NavigationBar = () => {
                                     <h2 className='text-lg'>{user.displayName ? user.displayName : 'Unknown'}</h2>
                                     <p>{user.email ? user.email : 'No Email'}</p>
                                 </div>
-                                <Dropdown.Item> Update Profile </Dropdown.Item>
+                                <Dropdown.Item onClick={() => navigate('/update-profile')}> Update Profile </Dropdown.Item>
                                 <Dropdown.Item onClick={logOut}> Log Out </Dropdown.Item>
                             </Dropdown> : <NavLink to="/login" state={location} className={`px-4 py-2 ${dark ? 'bg-pink-800' : 'bg-pink-600'} text-slate-100 text-base font-semibold rounded`}>Login</NavLink>
                         }

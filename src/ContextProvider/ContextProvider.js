@@ -26,7 +26,7 @@ const ContextProvider = ({ children }) => {
             displayName: name,
             photoURL: photo
         })
-            .then(() => { })
+            .then(() =>  setUser(auth.currentUser))
             .catch((error) => console.error(error.message));
     }
 
@@ -62,7 +62,8 @@ const ContextProvider = ({ children }) => {
         user,
         logOut,
         login,
-        thirdPartySignIn
+        thirdPartySignIn,
+        setNameAndPhoto
     };
 
     return (
