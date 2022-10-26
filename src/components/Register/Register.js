@@ -1,3 +1,4 @@
+import { Spinner } from 'flowbite-react';
 import React, { useContext } from 'react';
 import { Navigate, NavLink, useLocation } from 'react-router-dom';
 import { ContextCreator } from '../../ContextProvider/ContextProvider';
@@ -5,7 +6,7 @@ import ThirdPartySignIn from '../ThirdPartySignIn/ThirdPartySignIn';
 
 const Register = () => {
     const { state } = useLocation();
-    const { dark, createUser, user } = useContext(ContextCreator);
+    const { dark, createUser, user, loading } = useContext(ContextCreator);
 
     const handleRegistration = (e) => {
         e.preventDefault();
@@ -20,6 +21,12 @@ const Register = () => {
             createUser(email, password, name, photoURL);
             form.reset();
         }
+    }
+
+    if(loading) {
+        return <div className='text-center my-12'>
+            <Spinner aria-label='default spinner example' size={'xl'} />
+        </div>
     }
 
     return (
