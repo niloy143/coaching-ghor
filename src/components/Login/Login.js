@@ -29,7 +29,7 @@ const Login = () => {
 
     switch (loginError) {
         case 'auth/user-not-found':
-            customErrorMsg = 'This email didn\'t register here!'
+            customErrorMsg = 'Unknown Email Address!'
             break;
         case 'auth/wrong-password':
             customErrorMsg = 'Wrong Password!'

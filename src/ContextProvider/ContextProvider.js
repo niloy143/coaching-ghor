@@ -13,6 +13,7 @@ const ContextProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
     const [loginError, setLoginError] = useState(null);
+    const [regError, setRegError] = useState(null);
 
     const createUser = (email, password, name, photo) => {
         createUserWithEmailAndPassword(auth, email, password)
@@ -20,7 +21,7 @@ const ContextProvider = ({ children }) => {
                 setNameAndPhoto(name, photo);
                 setUser(result.user);
             })
-            .catch(error => console.error(error.message))
+            .catch(error => setRegError(error.code))
     }
 
     const setNameAndPhoto = (name, photo) => {
@@ -69,7 +70,9 @@ const ContextProvider = ({ children }) => {
         setNameAndPhoto,
         loading,
         loginError,
-        setLoginError
+        setLoginError,
+        regError,
+        setRegError
     };
 
     return (
