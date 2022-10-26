@@ -1,4 +1,4 @@
-import { Dropdown, Navbar, Tooltip } from 'flowbite-react';
+import { Avatar, Dropdown, Navbar, Tooltip } from 'flowbite-react';
 import React, { useContext } from 'react';
 import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import logo from '../../assets/coaching-ghor.logo.png'
@@ -33,9 +33,13 @@ const NavigationBar = () => {
                     <div>
                         {
                             user ? <Dropdown size={'xs'} inline={true}label={<Tooltip placement='right' style={`${dark ? 'dark' : 'light'}`} content={user.displayName}>
-                                <img className='w-12 h-12 rounded-full' src={user.photoURL} alt="user profile" />
+                                <Avatar img={user.photoURL} rounded={true} />
                             </Tooltip>}>
-                                <Dropdown.Item> Profile </Dropdown.Item>
+                                <div className='flex justify-center items-center flex-col px-5 py-5'>
+                                    <h2 className='text-lg'>{user.displayName ? user.displayName : 'Unknown'}</h2>
+                                    <p>{user.email ? user.email : 'No Email'}</p>
+                                </div>
+                                <Dropdown.Item> Update Profile </Dropdown.Item>
                                 <Dropdown.Item onClick={logOut}> Log Out </Dropdown.Item>
                             </Dropdown> : <NavLink to="/login" state={location} className={`px-4 py-2 ${dark ? 'bg-pink-800' : 'bg-pink-600'} text-slate-100 text-base font-semibold rounded`}>Login</NavLink>
                         }
