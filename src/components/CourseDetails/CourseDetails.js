@@ -1,5 +1,7 @@
 import React, { useContext } from 'react';
-import { BsBookmarkCheckFill, BsFillShieldLockFill } from 'react-icons/bs';
+import { BsBookmarkCheckFill, BsCameraVideoFill, BsFillQuestionCircleFill, BsFillShieldLockFill } from 'react-icons/bs';
+import { IoIosContacts, IoIosTime } from 'react-icons/io';
+import { CgNotes } from 'react-icons/cg';
 import { NavLink, useLoaderData } from 'react-router-dom';
 import { ContextCreator } from '../../ContextProvider/ContextProvider';
 
@@ -7,6 +9,8 @@ const CourseDetails = () => {
     const { dark } = useContext(ContextCreator);
     const [course] = useLoaderData();
     let keys = 1;
+
+    console.log(course)
 
     return (
         <div className={`${dark ? 'text-slate-100' : 'text-slate-700'} max-w-7xl mx-auto my-5 sm:my-12 px-5`}>
@@ -18,7 +22,7 @@ const CourseDetails = () => {
             <hr className='my-12' />
             <div className='flex flex-col md:flex-row justify-center md:justify-between items-center'>
                 <div>
-                    <h2 className='text-2xl sm:text-3xl font-semibold'>What will you learn from this course:</h2>
+                    <h2 className='text-2xl sm:text-3xl font-semibold'>What you will learn from this course:</h2>
                     <ul className='mt-5 mb-10 md:my-5'>
                         {
                             course.learningList.map(lesson => <li className='my-3 sm:text-xl font-semibold' key={keys++}>
@@ -29,12 +33,41 @@ const CourseDetails = () => {
                 </div>
                 <div className='w-72 border shadow-lg rounded-lg overflow-hidden pb-5'>
                     <img className='w-full' src="https://img.freepik.com/free-vector/social-media-background_127544-1091.jpg?w=1380&t=st=1666808168~exp=1666808768~hmac=5684fe21e92dbac51d2ce7078a84c86765586a1be5f39212254b6eacdedeab47" alt="" />
-                    <h3 className='px-3 text-center my-3 font-semibold text-2xl'>{course.title}</h3>
-                    <p className='px-3 my-3 text-center'>{course.tagline}</p>
-                    <div className='flex justify-center'>
-                        <NavLink to="" className={`${dark ? 'bg-lime-900' : 'bg-lime-500'} text-slate-100 px-5 py-3 rounded text-lg font-semibold hover:scale-95 inline-block`}>
-                            Get Premium Access <BsFillShieldLockFill className='inline' />
-                        </NavLink>
+                    <NavLink to="" className={`${dark ? 'bg-lime-900' : 'bg-lime-500'} text-slate-100 px-5 py-3 rounded text-lg font-semibold hover:scale-95 block m-3 text-center`}>
+                        Get Premium Access <BsFillShieldLockFill className='inline' />
+                    </NavLink>
+                    <div className='px-5 flex flex-col items-center'>
+                        <div className='flex items-center gap-3 my-3'>
+                            <IoIosContacts className='text-3xl' />
+                            <p>{course.students} Students Enrolled</p>
+                        </div>
+                        <div className='grid grid-cols-2 gap-3 mb-3'>
+                            <p className='flex items-center gap-1'>
+                                <BsCameraVideoFill className='inline text-xl' />
+                                <span>
+                                    {course.video} Videos
+                                </span>
+                            </p>
+                            <p className='flex items-center gap-1'>
+                                <IoIosTime className='inline text-xl' />
+                                <span>
+                                    {course.time} Hours
+                                </span>
+                            </p>
+                            <p className='flex items-center gap-1'>
+                                <CgNotes className='inline text-xl' />
+                                <span>
+                                    {course.Notes} Notes
+                                </span>
+                            </p>
+                            <p className='flex items-center gap-1'>
+                                <BsFillQuestionCircleFill className='inline text-xl' />
+                                <span>
+                                    {course.Quiz} Quiz
+                                </span>
+                            </p>
+
+                        </div>
                     </div>
                 </div>
             </div>
