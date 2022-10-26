@@ -7,13 +7,17 @@ const auth = getAuth(app);
 
 export const ContextCreator = createContext({});
 
+const getMode = localStorage.getItem('darkMode');
+const mode = getMode ? JSON.parse(getMode) : false;
+
 const ContextProvider = ({ children }) => {
 
-    const [dark, setDark] = useState(false);
+    const [dark, setDark] = useState(mode);
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
     const [loginError, setLoginError] = useState(null);
     const [regError, setRegError] = useState(null);
+
 
     const createUser = (email, password, name, photo) => {
         createUserWithEmailAndPassword(auth, email, password)

@@ -1,4 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
+import CourseDetails from "../components/CourseDetails/CourseDetails";
+import Home from "../components/Home/Home";
 import Login from "../components/Login/Login";
 import NavigationBar from "../components/NavigationBar/NavigationBar";
 import Register from "../components/Register/Register";
@@ -13,7 +15,7 @@ export const routes = createBrowserRouter([
         children: [
             {
                 path: '/',
-                element: <div>this is home</div>
+                element: <Home />
             },
             {
                 path: '/login',
@@ -26,6 +28,11 @@ export const routes = createBrowserRouter([
             {
                 path: '/update-profile',
                 element: <PrivateRoute><UpdateProfile /></PrivateRoute>
+            },
+            {
+                path: '/course',
+                element: <CourseDetails />,
+                loader: async() => fetch('https://coaching-ghor-server.vercel.app/courses')
             }
         ]
     },
@@ -35,5 +42,5 @@ export const routes = createBrowserRouter([
             <NavigationBar />
             <p className="text-3xl font-semibold text-center text-slate-500 my-12">Page Not Found</p>
         </div>
-    }
+    },
 ])

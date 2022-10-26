@@ -10,8 +10,10 @@ const NavigationBar = () => {
     const { dark, setDark, user, logOut, loading } = useContext(ContextCreator);
     const navigate = useNavigate();
     const location = useLocation();
+
     const handleMode = (isDark) => {
-        setDark(isDark)
+        setDark(isDark);
+        localStorage.setItem('darkMode', isDark);
     }
 
     return (
