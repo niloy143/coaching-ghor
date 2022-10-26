@@ -11,6 +11,7 @@ const ContextProvider = ({ children }) => {
 
     const [dark, setDark] = useState(false);
     const [user, setUser] = useState(null);
+    const [loading, setLoading] = useState(true);
 
     const createUser = (email, password, name, photo) => {
         createUserWithEmailAndPassword(auth, email, password)
@@ -48,7 +49,8 @@ const ContextProvider = ({ children }) => {
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (user) => {
-            setUser(user)
+            setUser(user);
+            setLoading(false);
         })
 
         return () => unsubscribe();
@@ -63,7 +65,8 @@ const ContextProvider = ({ children }) => {
         logOut,
         login,
         thirdPartySignIn,
-        setNameAndPhoto
+        setNameAndPhoto,
+        loading
     };
 
     return (

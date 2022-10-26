@@ -1,4 +1,4 @@
-import { Avatar, Dropdown, Navbar, Tooltip } from 'flowbite-react';
+import { Avatar, Dropdown, Navbar, Spinner, Tooltip } from 'flowbite-react';
 import React, { useContext } from 'react';
 import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import logo from '../../assets/coaching-ghor.logo.png'
@@ -6,10 +6,9 @@ import { ContextCreator } from '../../ContextProvider/ContextProvider';
 import './NavigationBar.css';
 
 const NavigationBar = () => {
-    const { dark, setDark, user, logOut } = useContext(ContextCreator);
+    const { dark, setDark, user, logOut, loading } = useContext(ContextCreator);
     const navigate = useNavigate();
     const location = useLocation();
-
     const handleMode = (isDark) => {
         setDark(isDark)
     }
@@ -32,7 +31,7 @@ const NavigationBar = () => {
                     </div>
                     <div>
                         {
-                            user ? <Dropdown size={'xs'} inline={true}label={<Tooltip placement='right' style={`${dark ? 'dark' : 'light'}`} content={user.displayName}>
+                            user ? <Dropdown size={'xs'} inline={true} label={<Tooltip placement='right' style={`${dark ? 'dark' : 'light'}`} content={user.displayName}>
                                 <Avatar img={user.photoURL} rounded={true} />
                             </Tooltip>}>
                                 <div className='flex justify-center items-center flex-col px-5 py-5'>
@@ -41,7 +40,9 @@ const NavigationBar = () => {
                                 </div>
                                 <Dropdown.Item onClick={() => navigate('/update-profile')}> Update Profile </Dropdown.Item>
                                 <Dropdown.Item onClick={logOut}> Log Out </Dropdown.Item>
-                            </Dropdown> : <NavLink to="/login" state={location} className={`px-4 py-2 ${dark ? 'bg-pink-800' : 'bg-pink-600'} text-slate-100 text-base font-semibold rounded`}>Login</NavLink>
+                            </Dropdown> : loading ? <Tooltip content={'Loading Login Status'}>
+                                <Spinner aria-label="Default status example" />
+                            </Tooltip> : <NavLink to="/login" state={location} className={`px-4 py-2 ${dark ? 'bg-pink-800' : 'bg-pink-600'} text-slate-100 text-base font-semibold rounded`}>Login</NavLink>
                         }
 
                     </div>
