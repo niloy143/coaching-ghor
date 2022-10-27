@@ -37,15 +37,11 @@ export const routes = createBrowserRouter([
                     },
                     {
                         path: '/courses/ongoing',
-                        element: <EmptyPages text={"You didn't enroll to any courses yet!"} />
+                        element: <PrivateRoute><EmptyPages text={"You didn't enroll to any courses yet!"} /></PrivateRoute>
                     },
                     {
                         path: '/courses/finished',
                         element: <PrivateRoute><EmptyPages text={"You haven't finished any courses yet!"} /></PrivateRoute>
-                    },
-                    {
-                        path: '/courses/offline',
-                        element: <PrivateRoute><EmptyPages text={"We do not have any offline courses yet!"} /></PrivateRoute>
                     },
                     {
                         path: '/courses/free',
@@ -57,6 +53,10 @@ export const routes = createBrowserRouter([
                         element: <Courses />,
                         loader: async () => fetch('https://coaching-ghor-server.vercel.app/courses/paid')
                     },
+                    {
+                        path: '/courses/offline',
+                        element: <EmptyPages text={"We do not have any offline courses yet!"} />
+                    }
                 ]
             },
             {
