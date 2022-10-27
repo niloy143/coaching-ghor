@@ -11,7 +11,7 @@ const Course = ({ course }) => {
             <img src={image.thumbnail} alt={title} />
             <h2 className='text-2xl lg:text-3xl font-semibold text-center my-5'>{title}</h2>
             <div className='flex items-center justify-between px-3'>
-                <NavLink to="/checkout" className={`inline-flex items-center gap-2 ${dark ? 'bg-blue-700' : 'bg-blue-400'} text-slate-100 px-5 py-3 rounded font-semibold text-base sm:text-lg hover:scale-95 transition`}>
+                <NavLink to={`/checkout/${id}`} className={`inline-flex items-center gap-2 ${dark ? 'bg-blue-700' : 'bg-blue-400'} text-slate-100 px-5 py-3 rounded font-semibold text-base sm:text-lg hover:scale-95 transition`}>
                     <span>Enroll Now</span>
                     <BsFillShieldLockFill />
                 </NavLink>

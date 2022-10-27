@@ -1,4 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
+import CheckoutPage from "../components/CheckoutPage/CheckoutPage";
 import CourseDetails from "../components/CourseDetails/CourseDetails";
 import QuestionsAnswers from "../components/CourseDetails/QuestionsAnswers.js/QuestionsAnswers";
 import Courses from "../components/Courses/Courses";
@@ -49,6 +50,11 @@ export const routes = createBrowserRouter([
                 path: '/update-profile',
                 element: <PrivateRoute><UpdateProfile /></PrivateRoute>
             },
+            {
+                path: '/checkout/:id',
+                element: <PrivateRoute><CheckoutPage /></PrivateRoute>,
+                loader: async({params}) => fetch(`https://coaching-ghor-server.vercel.app/course/${params.id}`)
+            }
         ]
     },
     {
