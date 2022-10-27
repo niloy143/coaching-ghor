@@ -2,9 +2,9 @@ import { createBrowserRouter } from "react-router-dom";
 import CourseDetails from "../components/CourseDetails/CourseDetails";
 import QuestionsAnswers from "../components/CourseDetails/QuestionsAnswers.js/QuestionsAnswers";
 import Courses from "../components/Courses/Courses";
+import ErrorPage from "../components/ErrorPage/ErrorPage";
 import Home from "../components/Home/Home";
 import Login from "../components/Login/Login";
-import NavigationBar from "../components/NavigationBar/NavigationBar";
 import Register from "../components/Register/Register";
 import UpdateProfile from "../components/UpdateProfile/UpdateProfile";
 import Main from "../layout/Main";
@@ -53,9 +53,6 @@ export const routes = createBrowserRouter([
     },
     {
         path: '*',
-        element: <div>
-            <NavigationBar />
-            <p className="text-3xl font-semibold text-center text-slate-500 my-12">Page Not Found</p>
-        </div>
+        element: <ErrorPage />
     },
 ])
