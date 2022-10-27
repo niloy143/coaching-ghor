@@ -1,5 +1,7 @@
+import { async } from "@firebase/util";
 import { createBrowserRouter } from "react-router-dom";
 import CourseDetails from "../components/CourseDetails/CourseDetails";
+import Courses from "../components/Courses/Courses";
 import Home from "../components/Home/Home";
 import Login from "../components/Login/Login";
 import NavigationBar from "../components/NavigationBar/NavigationBar";
@@ -16,6 +18,11 @@ export const routes = createBrowserRouter([
             {
                 path: '/',
                 element: <Home />
+            },
+            {
+                path: '/courses',
+                element: <Courses />,
+                loader: async() => fetch('https://coaching-ghor-server.vercel.app/courses')
             },
             {
                 path: '/login',

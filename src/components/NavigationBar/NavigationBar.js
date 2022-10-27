@@ -34,7 +34,7 @@ const NavigationBar = () => {
                     </div>
                     <div>
                         {
-                            user ? <Dropdown size={'xs'} inline={true} label={<Tooltip placement='right' style={`${dark ? 'dark' : 'light'}`} content={user.displayName}>
+                            user ? <Dropdown size={'xs'} inline={true} arrowIcon={false} label={<Tooltip placement='right' style={`${dark ? 'dark' : 'light'}`} content={user.displayName}>
                                 <Avatar img={user.photoURL} rounded={true} />
                             </Tooltip>}>
                                 <div className='flex justify-center items-center flex-col px-5 py-5'>
