@@ -1,6 +1,6 @@
-import { async } from "@firebase/util";
 import { createBrowserRouter } from "react-router-dom";
 import CourseDetails from "../components/CourseDetails/CourseDetails";
+import QuestionsAnswers from "../components/CourseDetails/QuestionsAnswers.js/QuestionsAnswers";
 import Courses from "../components/Courses/Courses";
 import Home from "../components/Home/Home";
 import Login from "../components/Login/Login";
@@ -25,6 +25,19 @@ export const routes = createBrowserRouter([
                 loader: async() => fetch('https://coaching-ghor-server.vercel.app/courses')
             },
             {
+                path: '/course/:id',
+                element: <PrivateRoute><CourseDetails /></PrivateRoute>,
+                loader: async ({ params }) => fetch(`https://coaching-ghor-server.vercel.app/course/${params.id}`)
+            },
+            {
+                path: '/faq',
+                element: <QuestionsAnswers />
+            },
+            {
+                path: '/blog',
+                element: <QuestionsAnswers />
+            },
+            {
                 path: '/login',
                 element: <Login />
             },
@@ -36,11 +49,6 @@ export const routes = createBrowserRouter([
                 path: '/update-profile',
                 element: <PrivateRoute><UpdateProfile /></PrivateRoute>
             },
-            {
-                path: '/course/:id',
-                element: <PrivateRoute><CourseDetails /></PrivateRoute>,
-                loader: async ({ params }) => fetch(`https://coaching-ghor-server.vercel.app/course/${params.id}`)
-            }
         ]
     },
     {

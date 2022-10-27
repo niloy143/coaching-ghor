@@ -1,5 +1,5 @@
 import { Dropdown } from 'flowbite-react';
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import { FcSettings } from 'react-icons/fc';
 import { useLoaderData } from 'react-router-dom';
 import { ContextCreator } from '../../ContextProvider/ContextProvider';
