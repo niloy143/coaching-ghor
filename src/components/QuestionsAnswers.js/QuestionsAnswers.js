@@ -1,6 +1,6 @@
 import { Accordion } from 'flowbite-react';
 import React, { useContext } from 'react';
-import { ContextCreator } from '../../../ContextProvider/ContextProvider';
+import { ContextCreator } from '../../ContextProvider/ContextProvider';
 
 const QuestionsAnswers = () => {
     const { dark } = useContext(ContextCreator);

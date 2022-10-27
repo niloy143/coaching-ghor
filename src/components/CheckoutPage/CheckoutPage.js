@@ -40,7 +40,7 @@ const CheckoutPage = () => {
                     </div>
                     <div className='flex flex-col sm:flex-row sm:justify-between gap-1 sm:gap-3 items-center sm:w-11/12 mx-auto my-3 text-xl font-semibold'>
                         <p>Payment:</p>
-                        <p className={`${dark ? 'text-green-400' : 'text-blue-600'}`}>${price}</p>
+                        <p className={`${dark ? 'text-green-400' : 'text-blue-600'}`}>${price ? price : '0'}</p>
                     </div>
                 </div>
                 <button className={`px-5 py-2 ${dark ? 'bg-lime-800' : 'bg-lime-600'} text-slate-100 text-base font-semibold rounded block mx-auto hover:scale-95 transition`}>Proceed to Pay</button>

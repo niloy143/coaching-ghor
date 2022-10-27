@@ -31,7 +31,7 @@ const CourseDetails = () => {
                 </div>
                 <div className='w-72 border shadow-lg rounded-lg overflow-hidden pb-5'>
                     <img className='w-full' src={course.image.thumbnail} alt="" />
-                    <NavLink to="" className={`${dark ? 'bg-lime-900' : 'bg-lime-500'} text-slate-100 px-5 py-3 rounded text-lg font-semibold hover:scale-95 block m-3 text-center`}>
+                    <NavLink to={`/checkout/${course.id}`} className={`${dark ? 'bg-lime-900' : 'bg-lime-500'} text-slate-100 px-5 py-3 rounded text-lg font-semibold hover:scale-95 block m-3 text-center`}>
                         Get Premium Access <BsFillShieldLockFill className='inline' />
                     </NavLink>
                     <div className='px-5 flex flex-col items-center'>
