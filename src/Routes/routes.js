@@ -41,11 +41,11 @@ export const routes = createBrowserRouter([
                     },
                     {
                         path: '/courses/finished',
-                        element: <EmptyPages text={"You haven't finished any courses yet!"} />
+                        element: <PrivateRoute><EmptyPages text={"You haven't finished any courses yet!"} /></PrivateRoute>
                     },
                     {
                         path: '/courses/offline',
-                        element: <EmptyPages text={"We do not have any offline courses yet!"} />
+                        element: <PrivateRoute><EmptyPages text={"We do not have any offline courses yet!"} /></PrivateRoute>
                     },
                     {
                         path: '/courses/free',
